@@ -2,7 +2,7 @@
 
 This is an independent community guide and integration patch. No affiliation or endorsement by the upstream projects is claimed.
 
-This integration connects drowzeys' original abliteration edit with Mia AI Lab's EXL3 two-Spark stack. Our contribution is the offline characterization and approximate rank-1 runtime implementation, plus the deployment and Goose verification. The upstream model, edit, quantization, and serving foundation are credited below.
+This integration connects drowzeys' original abliteration edit with Mia AI Lab's EXL3 two-Spark stack. Our contribution is the offline characterization and approximate rank-1 runtime implementation, plus deployment and API verification. The upstream model, edit, quantization, and serving foundation are credited below.
 
 - **DeepSeek**: DeepSeek-V4.1-Flash architecture and native model data. The MIT notice is retained in `licenses/DeepSeek-MIT.txt` for provenance; no model tensors are included.
 - **[Mia AI Lab](https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks)**: EXL3 2.9bpw checkpoint and the two-Spark serving kit. The pinned kit uses AGPL-3.0. Its retained historical MIT notice is copied in `licenses/Mia-Legacy-MIT.txt`. Follow the upstream license when redistributing the generated overlay or modified launcher.

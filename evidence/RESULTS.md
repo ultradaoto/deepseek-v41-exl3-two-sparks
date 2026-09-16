@@ -2,14 +2,13 @@
 
 This is a sanitized summary of the original run. Raw requests/responses, private addresses, hostnames, session databases, and internal logs are not included. The summary is not an independently audited benchmark release.
 
-## Working deployment and client
+## Working deployment
 
 - Two DGX Sparks, TP=2, unchanged Mia EXL3 2.9bpw checkpoint, separate file-backed native Engram.
 - Hook at alpha 3.5, layers 10–35; all 26 layers fired on each rank after the final recovery.
-- Both model containers running; no OOM; zero error markers in logs scoped to the successful startup. Management agents remained active.
+- Both model containers running; no OOM; zero error markers in logs scoped to the successful startup.
 - Configured context 131,072; full-length context was not evaluated here.
-- Installed Goose 1.49.0, saved custom provider, real response `GOOSE LINK OK`, exit 0, no stderr, **3.297 seconds**. The user subsequently confirmed the desktop app worked.
-- The client test used no extensions, no persistent session, and a temporary 512-token cap. It did not execute a coding task.
+- Completed inference was checked in addition to model discovery and health. Client-specific software, local settings, and conversation state are outside this release's scope.
 
 ## Local stock versus hook experiment
 

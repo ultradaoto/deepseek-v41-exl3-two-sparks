@@ -10,7 +10,7 @@ The upstream release now also offers a Mia-specific EXL3 sidecar and helper. Tha
 
 ## Offline characterization
 
-The original process ran on a laptop CPU with NumPy:
+The offline process uses CPU computation with NumPy:
 
 1. Parse the edited safetensors header and fetch corresponding native tensor byte ranges.
 2. Decode E4M3 using a 256-value lookup table. Expand each UE8M0 byte with `2^(byte−127)` over its 32×32 block.

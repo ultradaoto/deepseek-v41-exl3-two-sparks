@@ -1,4 +1,17 @@
 .env
+.env.*
+profile.local.env
+*.local.env
+.ssh/
+id_rsa*
+id_ed25519*
+known_hosts*
+authorized_keys*
+*.p12
+*.pfx
+*.sqlite*
+*.db-*
+*.bak
 .venv/
 __pycache__/
 *.pyc

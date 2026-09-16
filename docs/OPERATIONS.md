@@ -4,7 +4,7 @@
 
 | Symptom | Cause in this deployment | Resolution |
 | --- | --- | --- |
-| Goose 404, model does not exist | Client sent an obsolete model ID | Select `DeepSeek-v4.1-Flash-EXL3` in the provider and current session |
+| Client 404, model does not exist | Client sent an obsolete model ID | Select `DeepSeek-v4.1-Flash-EXL3` in the provider and current session |
 | HTTP 200 stream with no tokens | Head remained alive after worker reboot | Check both ranks; recover the worker dependencies and restart the pair |
 | No route to the worker fabric IP | Reboot removed a temporary IPv4 assignment | Configure the dedicated fabric profile persistently |
 | Temporary IP worked briefly, then disappeared | NetworkManager still owned the interface with a DHCP profile | Correct that profile instead of repeatedly running `ip addr add` |
@@ -44,7 +44,7 @@ nmcli -f connection.interface-name,ipv4.method,ipv4.addresses,ipv6.method connec
 The actual recovery saved the old values, changed that worker profile to manual IPv4 with no default route, and disabled IPv6 on that one link to restore its original IPv4 RoCE GID index. On a stopped model pair, substituting that node's address:
 
 ```bash
-FABRIC_IP=10.42.0.2
+read -r -p 'This node dedicated fabric IPv4 address: ' FABRIC_IP
 sudo nmcli connection modify "$PROFILE" \
   ipv4.method manual ipv4.addresses "$FABRIC_IP/24" ipv4.never-default yes \
   ipv6.method disabled
@@ -58,7 +58,7 @@ Recheck the IP, peer ping/SSH, and GID table before serving. You can also retain
 
 The pinned kit copies the worker startup script, chat template, EXL3 overlay, and auxiliary patches into `/tmp`, then bind-mounts them into its container. A reboot can remove those host files. Running `docker start` without restoring them is not a complete recovery.
 
-Our incident repair restored all 17 missing bind files from the corresponding head sources and verified SHA-256 hashes, preserving the existing containers. For a normal operator recovery, use the pinned, configured launcher to stage its files and launch the pair again after the fabric is healthy. Preserve your hook image, `EXL3_OVERLAY_HOST`, parameters, data mounts, and configuration-specific caches. Do not copy only the hook file and assume the other bind sources survived.
+Use the pinned, configured launcher to stage all required files and launch the pair again after the fabric is healthy. Preserve your hook image, `EXL3_OVERLAY_HOST`, parameters, data mounts, and configuration-specific caches. Do not copy only the hook file and assume the other bind sources survived. Compare staged source hashes before treating the recovery as complete.
 
 The working deployment retains Docker restart policy `no`; no watchdog or auto-reboot behavior was added. Therefore this guide does **not** promise unattended recovery across node reboots. Making that durable requires persistent startup-file locations plus ordered network/storage/service startup and a separately tested restart procedure. Enabling a restart policy alone does not solve the missing-file problem.
 
