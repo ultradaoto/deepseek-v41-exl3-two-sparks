@@ -1,0 +1,67 @@
+{
+  "captured_utc": "2026-09-16T20:46:33.449919+00:00",
+  "unit_tests": {
+    "passed": 9,
+    "command": "python -m unittest discover -s tests -v"
+  },
+  "public_native_scale_fetch": {
+    "bytes": 40960,
+    "shape": [
+      160,
+      256
+    ],
+    "exact_http_range": true,
+    "finite_scales": true
+  },
+  "packaging": {
+    "kit_commit": "85305680fb0f8ebc72b7b8ebf49ba54471019285",
+    "base_image": "ghcr.io/miaai-lab/deepseek-v4.1-flash-exl3-2x-dgx-sparks@sha256:2f0cf3adc0f989c1d446be274df864eb799630175f604c3b22b71b7205971dce",
+    "config_id": "fb051eb6cecd5438",
+    "overlay_sha256": "7f109bec461eb67a0122e8dffcf14bb94cadeed29d1a4e4681d0eee8a78e5cd0",
+    "launcher_sha256": "a6d942561d28b823834e0c21e337da62298ecf8d5461a9617acd3e235e6d34d4",
+    "params_sha256": "abf42531f925f418aa1914cdf50c51db474ec62b296b8de18ea1cfb8ac335a60",
+    "matches_tested_params": true,
+    "alpha": 3.5,
+    "layers": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35
+    ],
+    "note": "Freshly derived parameters require their own behavioral validation."
+  },
+  "python_syntax": "passed",
+  "bash_document_blocks_checked": 17,
+  "patched_launcher_bash_syntax": "passed",
+  "local_markdown_links_checked": 12,
+  "private_data_scan": "passed",
+  "not_performed": [
+    "Fresh full 26-layer direction derivation",
+    "New hardware deployment of the organized guide",
+    "Weight upload to Hugging Face"
+  ],
+  "tracked_files_checked": 21,
+  "distribution_bytes": 107838
+}

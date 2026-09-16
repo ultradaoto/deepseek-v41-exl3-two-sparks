@@ -1,0 +1,17 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+build/
+downloads/
+model/
+engram-src/
+*.npz
+*.safetensors
+*.log
+*.db
+*.pem
+*.key
+*.tar
+*.tar.gz
+hf-upload/
