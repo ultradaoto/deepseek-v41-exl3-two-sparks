@@ -2,6 +2,8 @@
 
 A practical record of a working two-node deployment, including the small runtime hook used to reproduce an abliteration-style rank-1 edit **without changing the EXL3 checkpoint**.
 
+**Built on two upstream projects:** we took the edit from [drowzeys' DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed](https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed), recovered an approximate rank-1 representation, and made it work as a runtime hook with [Mia AI Lab's DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks](https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks). Credit goes to **drowzeys for the original abliteration sidecar** and **Mia AI Lab for the EXL3 checkpoint and two-Spark serving foundation**. Our contribution is the offline characterization, runtime integration, and deployment and Goose verification documented here.
+
 **Verified 16 September 2026:** both Spark ranks running; all 26 target layers firing at alpha 3.5; Goose 1.49.0 returned `GOOSE LINK OK` through its saved provider in 3.3 seconds. This is a community reproduction guide, not an official DeepSeek, Mia AI Lab, NVIDIA, or Goose release.
 
 ## The idea in one minute
@@ -62,6 +64,9 @@ There are **no checkpoint weights, gated sidecar bytes, recovered parameter vect
 
 ## Credits and licenses
 
-[DeepSeek](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash) supplies the base model. [Mia AI Lab](https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks) supplies the EXL3 checkpoint and two-Spark serving foundation. [drowzeys](https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed) supplies the edited sidecar that motivated the analysis. [Arditi et al.](https://arxiv.org/abs/2406.11717) provide the underlying refusal-direction research context.
+- **[drowzeys](https://huggingface.co/drowzeys/DeepSeek-V4.1-Flash-Abliterated-Cybersecurity-Unleashed)** created the original abliteration sidecar whose edit we characterized and approximately reproduced through the runtime hook.
+- **[Mia AI Lab](https://github.com/MiaAI-Lab/DeepSeek-v4.1-Flash-EXL3-2x-DGX-Sparks)** provided the EXL3 2.9bpw checkpoint and two-Spark serving foundation that make this deployment possible.
+- **[DeepSeek](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash)** supplied the base model.
+- **[Arditi et al.](https://arxiv.org/abs/2406.11717)** provide the underlying refusal-direction research context.
 
 This guide and its code are distributed under [AGPL-3.0](LICENSE), consistent with the pinned serving-kit license. Model data has separate terms; see [NOTICE](NOTICE.md). A model card's license field does not replace an additional access agreement.
